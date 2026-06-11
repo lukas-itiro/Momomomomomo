@@ -6,29 +6,30 @@
 
 body {
   min-height: 100vh;
+  background: #fff0f5;
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+/* Screens */
+.screen {
+  position: fixed;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff0f5;
-  font-family: system-ui, -apple-system, sans-serif;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Card */
-.card {
-  position: relative;
-  background: #ffffff;
-  border: 1px solid #f4c0d1;
-  border-radius: 16px;
-  padding: 2.5rem 2rem 2rem;
-  width: 100%;
-  max-width: 380px;
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(212, 83, 126, 0.08);
+.screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.03);
 }
 
-/* Floating hearts background */
+/* Floating hearts */
 .hearts-bg {
-  position: absolute;
+  position: fixed;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
@@ -45,12 +46,24 @@ body {
 
 @keyframes floatUp {
   0%   { transform: translateY(0) scale(0.8); opacity: 0.6; }
-  100% { transform: translateY(-130px) scale(1.1); opacity: 0; }
+  100% { transform: translateY(-140px) scale(1.1); opacity: 0; }
 }
 
-/* Decorations */
-.deco-top,
-.deco-top2 {
+/* Card (tela 1) */
+.card {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border: 1px solid #f4c0d1;
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 24px rgba(212, 83, 126, 0.08);
+  overflow: hidden;
+}
+
+.deco-top, .deco-top2 {
   position: absolute;
   top: 12px;
   font-size: 13px;
@@ -60,7 +73,6 @@ body {
 .deco-top  { left: 16px; }
 .deco-top2 { right: 16px; }
 
-/* Icon */
 .icon-heart {
   position: relative;
   z-index: 1;
@@ -70,7 +82,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Titles */
 .card-title {
   position: relative;
   z-index: 1;
@@ -90,7 +101,6 @@ body {
   margin-bottom: 1.75rem;
 }
 
-/* Label */
 .field-label {
   position: relative;
   z-index: 1;
@@ -100,26 +110,28 @@ body {
   margin-bottom: 6px;
 }
 
-/* Input */
 .code-input {
   position: relative;
   z-index: 1;
   width: 100%;
   letter-spacing: 0.2em;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: center;
+  text-transform: uppercase;
   border: 1px solid #ed93b1;
   border-radius: 8px;
   padding: 10px 14px;
   background: #ffffff;
   color: #3d0a1e;
   outline: none;
+  font-family: 'Courier New', monospace;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .code-input::placeholder {
   letter-spacing: 0.1em;
   color: #d4a0b4;
+  text-transform: none;
 }
 
 .code-input:focus {
@@ -127,7 +139,6 @@ body {
   box-shadow: 0 0 0 3px rgba(212, 83, 126, 0.15);
 }
 
-/* Button */
 .btn {
   position: relative;
   z-index: 1;
@@ -151,7 +162,6 @@ body {
 .btn:hover  { background: #993556; }
 .btn:active { transform: scale(0.97); }
 
-/* Message */
 .msg {
   position: relative;
   z-index: 1;
@@ -166,8 +176,55 @@ body {
 .msg.ok  { background: #eafbf0; color: #1a6e3c; display: block; }
 .msg.err { background: #fdecea; color: #a32d2d; display: block; }
 
+/* Tela 2: Spotify */
+.spotify-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotify-img {
+  max-width: 280px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.spotify-fallback {
+  text-align: center;
+  color: #9c5070;
+  background: #fff;
+  border: 1px dashed #ed93b1;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  max-width: 300px;
+}
+
+.spotify-fallback span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #d4537e;
+}
+
+.spotify-fallback p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.spotify-fallback code {
+  font-size: 0.8rem;
+  background: #fbeaf0;
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: #993556;
+}
+
+.hidden { display: none !important; }
+
 /* Mobile */
 @media (max-width: 440px) {
-  body { padding: 1rem; align-items: flex-start; padding-top: 3rem; }
-  .card { padding: 2rem 1.25rem 1.75rem; }
+  .card { padding: 2rem 1.25rem 1.75rem; margin: 1rem; }
+  .spotify-img { max-width: 240px; }
 }

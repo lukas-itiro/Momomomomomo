@@ -8,19 +8,52 @@
 </head>
 <body>
 
-  <div class="card" id="card">
-    <div class="hearts-bg" id="heartsBg"></div>
-    <span class="deco-top" aria-hidden="true">♥ ♡ ♥</span>
-    <span class="deco-top2" aria-hidden="true">♥ ♡ ♥</span>
-    <div class="icon-heart" aria-hidden="true">♥</div>
-    <p class="card-title">Área exclusiva</p>
-    <p class="card-sub">Digite seu código de acesso para continuar</p>
-    <label class="field-label" for="codeInput">Código de acesso</label>
-    <input class="code-input" id="codeInput" type="password" placeholder="••••••••" maxlength="20" autocomplete="off" />
-    <button class="btn" id="submitBtn">
-      <span aria-hidden="true">♥</span> Entrar
-    </button>
-    <div class="msg" id="msg" role="alert"></div>
+  <!-- Tela 1: formulário -->
+  <div class="screen" id="screen-login">
+    <div class="card">
+      <div class="hearts-bg" id="heartsBg"></div>
+      <span class="deco-top" aria-hidden="true">♥ ♡ ♥</span>
+      <span class="deco-top2" aria-hidden="true">♥ ♡ ♥</span>
+      <div class="icon-heart" aria-hidden="true">♥</div>
+      <p class="card-title">Digite o código de acesso para continuar</p>
+      <input
+        class="code-input"
+        id="codeInput"
+        type="text"
+        placeholder="XXX-0000-XXXX"
+        maxlength="13"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="btn" id="submitBtn">
+        <span aria-hidden="true">♥</span> Entrar
+      </button>
+      <div class="msg" id="msg" role="alert"></div>
+    </div>
+  </div>
+
+  <!-- Tela 2: código Spotify -->
+  <div class="screen hidden" id="screen-spotify">
+    <div class="hearts-bg" id="heartsBg2"></div>
+    <div class="spotify-wrap">
+      <!--
+        INSTRUÇÕES:
+        Substitua o atributo src abaixo pelo caminho da imagem do seu código Spotify.
+        Exemplo: src="spotify-code.png"
+        A imagem deve estar na mesma pasta que este arquivo HTML.
+      -->
+      <img
+        src="spcode-1Bffl9GCysfaFzLdwPweXF.jpeg"
+        alt="Código Spotify"
+        id="spotifyImg"
+        class="spotify-img"
+        onerror="this.replaceWith(document.getElementById('spotify-fallback'))"
+      />
+      <div id="spotify-fallback" class="spotify-fallback hidden">
+        <span aria-hidden="true">♫</span>
+        <p>Substitua <code>src</code> em <code>index.html</code><br>pela imagem do seu código Spotify</p>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
